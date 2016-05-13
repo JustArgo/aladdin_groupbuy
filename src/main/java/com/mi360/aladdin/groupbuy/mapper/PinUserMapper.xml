@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mi360.aladdin.groupbuy.mapper.PinUserMapper" >
+  <resultMap id="BaseResultMap" type="com.mi360.aladdin.groupbuy.domain.PinUser" >
+    <id column="ID" property="ID" jdbcType="INTEGER" />
+    <result column="pinID" property="pinID" jdbcType="INTEGER" />
+    <result column="openID" property="openID" jdbcType="INTEGER" />
+    <result column="mqID" property="mqID" jdbcType="VARCHAR" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, pinID, openID, mqID, createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_pin_user
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_pin_user
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mi360.aladdin.groupbuy.domain.PinUser" useGeneratedKeys="true" keyProperty="ID">
+    insert into t_pin_user (ID, pinID, openID, 
+      mqID, createTime)
+    values (#{ID,jdbcType=INTEGER}, #{pinID,jdbcType=INTEGER}, #{openID,jdbcType=INTEGER}, 
+      #{mqID,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mi360.aladdin.groupbuy.domain.PinUser" useGeneratedKeys="true" keyProperty="ID">
+    insert into t_pin_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="pinID != null" >
+        pinID,
+      </if>
+      <if test="openID != null" >
+        openID,
+      </if>
+      <if test="mqID != null" >
+        mqID,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="pinID != null" >
+        #{pinID,jdbcType=INTEGER},
+      </if>
+      <if test="openID != null" >
+        #{openID,jdbcType=INTEGER},
+      </if>
+      <if test="mqID != null" >
+        #{mqID,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mi360.aladdin.groupbuy.domain.PinUser" >
+    update t_pin_user
+    <set >
+      <if test="pinID != null" >
+        pinID = #{pinID,jdbcType=INTEGER},
+      </if>
+      <if test="openID != null" >
+        openID = #{openID,jdbcType=INTEGER},
+      </if>
+      <if test="mqID != null" >
+        mqID = #{mqID,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mi360.aladdin.groupbuy.domain.PinUser" >
+    update t_pin_user
+    set pinID = #{pinID,jdbcType=INTEGER},
+      openID = #{openID,jdbcType=INTEGER},
+      mqID = #{mqID,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=TIMESTAMP}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <select id="selectByCondition" parameterType="com.mi360.aladdin.groupbuy.domain.PinUser" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from t_pin_user
+  	<where>
+  	  <if test="pinID != null" >
+        AND pinID = #{pinID,jdbcType=INTEGER}
+      </if>
+      <if test="openID != null" >
+        AND openID = #{openID,jdbcType=INTEGER}
+      </if>
+      <if test="mqID != null" >
+        AND mqID = #{mqID,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+        AND createTime = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+  	</where>
+  </select>
+</mapper>

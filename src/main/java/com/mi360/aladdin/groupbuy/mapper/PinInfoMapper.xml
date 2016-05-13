@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mi360.aladdin.groupbuy.mapper.PinInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.mi360.aladdin.groupbuy.domain.PinInfo" >
+    <id column="ID" property="ID" jdbcType="INTEGER" />
+    <result column="supplyID" property="supplyID" jdbcType="INTEGER" />
+    <result column="productID" property="productID" jdbcType="INTEGER" />
+    <result column="pinTitle" property="pinTitle" jdbcType="VARCHAR" />
+    <result column="pinCode" property="pinCode" jdbcType="VARCHAR" />
+    <result column="pinPrice" property="pinPrice" jdbcType="BIGINT" />
+    <result column="price" property="price" jdbcType="BIGINT" />
+    <result column="pinImg" property="pinImg" jdbcType="VARCHAR" />
+    <result column="canCount" property="canCount" jdbcType="INTEGER" />
+    <result column="sells" property="sells" jdbcType="INTEGER" />
+    <result column="people" property="people" jdbcType="INTEGER" />
+    <result column="pinCount" property="pinCount" jdbcType="INTEGER" />
+    <result column="limitCount" property="limitCount" jdbcType="INTEGER" />
+    <result column="sortOrder" property="sortOrder" jdbcType="INTEGER" />
+    <result column="platform" property="platform" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="endTime" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="beginTime" property="beginTime" jdbcType="TIMESTAMP" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, supplyID, productID, pinTitle, pinCode, pinPrice, price, pinImg, canCount, sells, 
+    people, pinCount, limitCount, sortOrder, platform, status, uid, endTime, beginTime, 
+    createTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_pin_info
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_pin_info
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mi360.aladdin.groupbuy.domain.PinInfo" >
+    insert into t_pin_info (ID, supplyID, productID, 
+      pinTitle, pinCode, pinPrice, 
+      price, pinImg, canCount, 
+      sells, people, pinCount, 
+      limitCount, sortOrder, platform, 
+      status, uid, endTime, 
+      beginTime, createTime, updateTime
+      )
+    values (#{ID,jdbcType=INTEGER}, #{supplyID,jdbcType=INTEGER}, #{productID,jdbcType=INTEGER}, 
+      #{pinTitle,jdbcType=VARCHAR}, #{pinCode,jdbcType=VARCHAR}, #{pinPrice,jdbcType=BIGINT}, 
+      #{price,jdbcType=BIGINT}, #{pinImg,jdbcType=VARCHAR}, #{canCount,jdbcType=INTEGER}, 
+      #{sells,jdbcType=INTEGER}, #{people,jdbcType=INTEGER}, #{pinCount,jdbcType=INTEGER}, 
+      #{limitCount,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER}, #{platform,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{beginTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mi360.aladdin.groupbuy.domain.PinInfo" >
+    insert into t_pin_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="supplyID != null" >
+        supplyID,
+      </if>
+      <if test="productID != null" >
+        productID,
+      </if>
+      <if test="pinTitle != null" >
+        pinTitle,
+      </if>
+      <if test="pinCode != null" >
+        pinCode,
+      </if>
+      <if test="pinPrice != null" >
+        pinPrice,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="pinImg != null" >
+        pinImg,
+      </if>
+      <if test="canCount != null" >
+        canCount,
+      </if>
+      <if test="sells != null" >
+        sells,
+      </if>
+      <if test="people != null" >
+        people,
+      </if>
+      <if test="pinCount != null" >
+        pinCount,
+      </if>
+      <if test="limitCount != null" >
+        limitCount,
+      </if>
+      <if test="sortOrder != null" >
+        sortOrder,
+      </if>
+      <if test="platform != null" >
+        platform,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="endTime != null" >
+        endTime,
+      </if>
+      <if test="beginTime != null" >
+        beginTime,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="updateTime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="supplyID != null" >
+        #{supplyID,jdbcType=INTEGER},
+      </if>
+      <if test="productID != null" >
+        #{productID,jdbcType=INTEGER},
+      </if>
+      <if test="pinTitle != null" >
+        #{pinTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="pinCode != null" >
+        #{pinCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pinPrice != null" >
+        #{pinPrice,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=BIGINT},
+      </if>
+      <if test="pinImg != null" >
+        #{pinImg,jdbcType=VARCHAR},
+      </if>
+      <if test="canCount != null" >
+        #{canCount,jdbcType=INTEGER},
+      </if>
+      <if test="sells != null" >
+        #{sells,jdbcType=INTEGER},
+      </if>
+      <if test="people != null" >
+        #{people,jdbcType=INTEGER},
+      </if>
+      <if test="pinCount != null" >
+        #{pinCount,jdbcType=INTEGER},
+      </if>
+      <if test="limitCount != null" >
+        #{limitCount,jdbcType=INTEGER},
+      </if>
+      <if test="sortOrder != null" >
+        #{sortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="platform != null" >
+        #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginTime != null" >
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mi360.aladdin.groupbuy.domain.PinInfo" >
+    update t_pin_info
+    <set >
+      <if test="supplyID != null" >
+        supplyID = #{supplyID,jdbcType=INTEGER},
+      </if>
+      <if test="productID != null" >
+        productID = #{productID,jdbcType=INTEGER},
+      </if>
+      <if test="pinTitle != null" >
+        pinTitle = #{pinTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="pinCode != null" >
+        pinCode = #{pinCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pinPrice != null" >
+        pinPrice = #{pinPrice,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=BIGINT},
+      </if>
+      <if test="pinImg != null" >
+        pinImg = #{pinImg,jdbcType=VARCHAR},
+      </if>
+      <if test="canCount != null" >
+        canCount = #{canCount,jdbcType=INTEGER},
+      </if>
+      <if test="sells != null" >
+        sells = #{sells,jdbcType=INTEGER},
+      </if>
+      <if test="people != null" >
+        people = #{people,jdbcType=INTEGER},
+      </if>
+      <if test="pinCount != null" >
+        pinCount = #{pinCount,jdbcType=INTEGER},
+      </if>
+      <if test="limitCount != null" >
+        limitCount = #{limitCount,jdbcType=INTEGER},
+      </if>
+      <if test="sortOrder != null" >
+        sortOrder = #{sortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="platform != null" >
+        platform = #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="endTime != null" >
+        endTime = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginTime != null" >
+        beginTime = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mi360.aladdin.groupbuy.domain.PinInfo" >
+    update t_pin_info
+    set supplyID = #{supplyID,jdbcType=INTEGER},
+      productID = #{productID,jdbcType=INTEGER},
+      pinTitle = #{pinTitle,jdbcType=VARCHAR},
+      pinCode = #{pinCode,jdbcType=VARCHAR},
+      pinPrice = #{pinPrice,jdbcType=BIGINT},
+      price = #{price,jdbcType=BIGINT},
+      pinImg = #{pinImg,jdbcType=VARCHAR},
+      canCount = #{canCount,jdbcType=INTEGER},
+      sells = #{sells,jdbcType=INTEGER},
+      people = #{people,jdbcType=INTEGER},
+      pinCount = #{pinCount,jdbcType=INTEGER},
+      limitCount = #{limitCount,jdbcType=INTEGER},
+      sortOrder = #{sortOrder,jdbcType=INTEGER},
+      platform = #{platform,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      endTime = #{endTime,jdbcType=TIMESTAMP},
+      beginTime = #{beginTime,jdbcType=TIMESTAMP},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByCondition" parameterType="PinInfo" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from t_pin_info
+    <where>
+      <if test="supplyID != null" >
+        AND supplyID = #{supplyID,jdbcType=INTEGER}
+      </if>
+      <if test="productID != null" >
+        AND productID = #{productID,jdbcType=INTEGER}
+      </if>
+      <if test="pinTitle != null" >
+      	AND pinTitle = #{pinTitle,jdbcType=VARCHAR}
+      </if>
+      <if test="pinCode != null" >
+        AND pinCode = #{pinCode,jdbcType=VARCHAR}
+      </if>
+      <if test="pinPrice != null">
+      	AND pinPrice = #{pinPrice,jdbcType=BIGINT}
+      </if>
+      <if test="price != null" >
+        AND price = #{price,jdbcType=BIGINT}
+      </if>
+      <if test="pinImg != null" >
+      	AND pinImg = #{pinImg,jdbcType=VARCHAR}
+      </if>
+      <if test="canCount != null" >
+        AND canCount = #{canCount,jdbcType=INTEGER}
+      </if>
+      <if test="sells != null" >
+        AND sells = #{sells,jdbcType=INTEGER}
+      </if>
+      <if test="people != null" >
+        AND people = #{people,jdbcType=INTEGER}
+      </if>
+      <if test="pinCount != null" >
+        AND pinCount = #{pinCount,jdbcType=INTEGER}
+      </if>
+      <if test="limitCount != null" >
+        AND limitCount = #{limitCount,jdbcType=INTEGER}
+      </if>
+      <if test="sortOrder != null" >
+        AND sortOrder = #{sortOrder,jdbcType=INTEGER}
+      </if>
+      <if test="platform != null" >
+        AND platform = #{platform,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="uid != null" >
+        AND uid = #{uid,jdbcType=INTEGER}
+      </if>
+      <if test="endTime != null" >
+        AND endTime = #{endTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="beginTime != null" >
+        AND beginTime = #{beginTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createTime != null" >
+        AND createTime = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+        AND updateTime = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    group by sortOrder
+  </select>
+  <delete id="deletePinInfoByIDs">
+  	update t_pin_info
+  	set status = 'DEL'
+  	<where>
+  		id in
+  		<foreach collection="array" open="(" separator="," close=")" item="id">
+  			#{id,jdbcType=INTEGER}
+  		</foreach>
+  	</where>
+  </delete>
+  <update id="putOnShelves">
+  	update t_pin_info
+  	set status="UP#"
+  	<where>
+  		id in
+  		<foreach collection="array" open="(" separator="," close=")" item="id">
+  			#{id,jdbcType=INTEGER}
+  		</foreach>
+  	</where>
+  </update>
+  <select id="selectPinInfoIng" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from t_pin_info
+  	where status='UP#' and endTime > now()
+  </select>
+  <select id="selectByIDs" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from t_pin_info
+  	where id in 
+  	<foreach collection="array" item="id" open="(" separator="," close=")">
+  		#{id,jdbcTpye=INTEGER}
+  	</foreach>
+  </select>
+  <select id="selectByConditionWithPagination" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from t_pin_info
+  	<where>
+  		<if test="where != null">
+			<foreach collection="where" item="item" separator=" AND ">
+				${item.column} ${item.operator} #{item.value}
+			</foreach>				
+		</if>
+  	</where>
+  	<trim prefix="order by">
+  		<if test="order !=null">
+  			<foreach collection="order" item="item" separator=",">
+				${item.column}
+				<if test="item.direction == null">
+					desc
+				</if>
+				<if test="item.direction != null">
+					${item.direction}
+				</if>
+			</foreach>
+  		</if>
+  	</trim>
+  	LIMIT #{skip},#{pageSize}
+  </select>
+</mapper>

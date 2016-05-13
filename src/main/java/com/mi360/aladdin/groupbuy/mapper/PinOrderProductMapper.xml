@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mi360.aladdin.groupbuy.mapper.PinOrderProductMapper" >
+  <resultMap id="BaseResultMap" type="com.mi360.aladdin.groupbuy.domain.PinOrderProduct" >
+    <id column="ID" property="ID" jdbcType="INTEGER" />
+    <result column="orderID" property="orderID" jdbcType="INTEGER" />
+    <result column="productID" property="productID" jdbcType="INTEGER" />
+    <result column="productName" property="productName" jdbcType="VARCHAR" />
+    <result column="supID" property="supID" jdbcType="INTEGER" />
+    <result column="supName" property="supName" jdbcType="VARCHAR" />
+    <result column="skuID" property="skuID" jdbcType="INTEGER" />
+    <result column="skuNameStr" property="skuNameStr" jdbcType="VARCHAR" />
+    <result column="supPrice" property="supPrice" jdbcType="BIGINT" />
+    <result column="price" property="price" jdbcType="BIGINT" />
+    <result column="sum" property="sum" jdbcType="BIGINT" />
+    <result column="count" property="count" jdbcType="BIGINT" />
+    <result column="postPay" property="postPay" jdbcType="BIGINT" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, orderID, productID, productName, supID, supName, skuID, skuNameStr, supPrice, 
+    price, sum, count, postPay, createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_pin_order_product
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_pin_order_product
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mi360.aladdin.groupbuy.domain.PinOrderProduct" >
+    insert into t_pin_order_product (ID, orderID, productID, 
+      productName, supID, supName, 
+      skuID, skuNameStr, supPrice, 
+      price, sum, count, postPay, 
+      createTime)
+    values (#{ID,jdbcType=INTEGER}, #{orderID,jdbcType=INTEGER}, #{productID,jdbcType=INTEGER}, 
+      #{productName,jdbcType=VARCHAR}, #{supID,jdbcType=INTEGER}, #{supName,jdbcType=VARCHAR}, 
+      #{skuID,jdbcType=INTEGER}, #{skuNameStr,jdbcType=VARCHAR}, #{supPrice,jdbcType=BIGINT}, 
+      #{price,jdbcType=BIGINT}, #{sum,jdbcType=BIGINT}, #{count,jdbcType=BIGINT}, #{postPay,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mi360.aladdin.groupbuy.domain.PinOrderProduct" >
+    insert into t_pin_order_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="orderID != null" >
+        orderID,
+      </if>
+      <if test="productID != null" >
+        productID,
+      </if>
+      <if test="productName != null" >
+        productName,
+      </if>
+      <if test="supID != null" >
+        supID,
+      </if>
+      <if test="supName != null" >
+        supName,
+      </if>
+      <if test="skuID != null" >
+        skuID,
+      </if>
+      <if test="skuNameStr != null" >
+        skuNameStr,
+      </if>
+      <if test="supPrice != null" >
+        supPrice,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="sum != null" >
+        sum,
+      </if>
+      <if test="count != null" >
+        count,
+      </if>
+      <if test="postPay != null" >
+        postPay,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="orderID != null" >
+        #{orderID,jdbcType=INTEGER},
+      </if>
+      <if test="productID != null" >
+        #{productID,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="supID != null" >
+        #{supID,jdbcType=INTEGER},
+      </if>
+      <if test="supName != null" >
+        #{supName,jdbcType=VARCHAR},
+      </if>
+      <if test="skuID != null" >
+        #{skuID,jdbcType=INTEGER},
+      </if>
+      <if test="skuNameStr != null" >
+        #{skuNameStr,jdbcType=VARCHAR},
+      </if>
+      <if test="supPrice != null" >
+        #{supPrice,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=BIGINT},
+      </if>
+      <if test="sum != null" >
+        #{sum,jdbcType=BIGINT},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=BIGINT},
+      </if>
+      <if test="postPay != null" >
+        #{postPay,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mi360.aladdin.groupbuy.domain.PinOrderProduct" >
+    update t_pin_order_product
+    <set >
+      <if test="orderID != null" >
+        orderID = #{orderID,jdbcType=INTEGER},
+      </if>
+      <if test="productID != null" >
+        productID = #{productID,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null" >
+        productName = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="supID != null" >
+        supID = #{supID,jdbcType=INTEGER},
+      </if>
+      <if test="supName != null" >
+        supName = #{supName,jdbcType=VARCHAR},
+      </if>
+      <if test="skuID != null" >
+        skuID = #{skuID,jdbcType=INTEGER},
+      </if>
+      <if test="skuNameStr != null" >
+        skuNameStr = #{skuNameStr,jdbcType=VARCHAR},
+      </if>
+      <if test="supPrice != null" >
+        supPrice = #{supPrice,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=BIGINT},
+      </if>
+      <if test="sum != null" >
+        sum = #{sum,jdbcType=BIGINT},
+      </if>
+      <if test="count != null" >
+        count = #{count,jdbcType=BIGINT},
+      </if>
+      <if test="postPay != null" >
+        postPay = #{postPay,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mi360.aladdin.groupbuy.domain.PinOrderProduct" >
+    update t_pin_order_product
+    set orderID = #{orderID,jdbcType=INTEGER},
+      productID = #{productID,jdbcType=INTEGER},
+      productName = #{productName,jdbcType=VARCHAR},
+      supID = #{supID,jdbcType=INTEGER},
+      supName = #{supName,jdbcType=VARCHAR},
+      skuID = #{skuID,jdbcType=INTEGER},
+      skuNameStr = #{skuNameStr,jdbcType=VARCHAR},
+      supPrice = #{supPrice,jdbcType=BIGINT},
+      price = #{price,jdbcType=BIGINT},
+      sum = #{sum,jdbcType=BIGINT},
+      count = #{count,jdbcType=BIGINT},
+      postPay = #{postPay,jdbcType=BIGINT},
+      createTime = #{createTime,jdbcType=TIMESTAMP}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <select id="selectByMqID" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select
+  	op.ID, op.orderID, op.productID, op.productName, op.supID, op.supName, op.skuID, op.skuNameStr, op.supPrice, 
+    op.price, op.sum, op.count, op.postPay, op.createTime
+  	from t_pin_order_product op join t_pin_order o on op.orderID = o.ID  
+  	where o.mqID = #{mqID,jdbcType=VARCHAR}
+  	order by op.createTime desc
+  </select>
+</mapper>

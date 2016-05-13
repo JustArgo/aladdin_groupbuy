@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mi360.aladdin.groupbuy.mapper.PinOpenMapper" >
+  <resultMap id="BaseResultMap" type="com.mi360.aladdin.groupbuy.domain.PinOpen" >
+    <id column="ID" property="ID" jdbcType="INTEGER" />
+    <result column="mqID" property="mqID" jdbcType="VARCHAR" />
+    <result column="productID" property="productID" jdbcType="INTEGER" />
+    <result column="pinID" property="pinID" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="pinStatus" property="pinStatus" jdbcType="VARCHAR" />
+    <result column="alreadys" property="alreadys" jdbcType="INTEGER" />
+    <result column="cans" property="cans" jdbcType="INTEGER" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, mqID, productID, pinID, status, pinStatus, alreadys, cans, createTime, endTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_pin_open
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_pin_open
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mi360.aladdin.groupbuy.domain.PinOpen" useGeneratedKeys="true" keyProperty="ID">
+    insert into t_pin_open (ID, mqID, productID, 
+      pinID, status, pinStatus, 
+      alreadys, cans, createTime, 
+      endTime)
+    values (#{ID,jdbcType=INTEGER}, #{mqID,jdbcType=VARCHAR}, #{productID,jdbcType=INTEGER}, 
+      #{pinID,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{pinStatus,jdbcType=VARCHAR}, 
+      #{alreadys,jdbcType=INTEGER}, #{cans,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mi360.aladdin.groupbuy.domain.PinOpen" useGeneratedKeys="true" keyProperty="ID">
+    insert into t_pin_open
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="mqID != null" >
+        mqID,
+      </if>
+      <if test="productID != null" >
+        productID,
+      </if>
+      <if test="pinID != null" >
+        pinID,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="pinStatus != null" >
+        pinStatus,
+      </if>
+      <if test="alreadys != null" >
+        alreadys,
+      </if>
+      <if test="cans != null" >
+        cans,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="endTime != null" >
+        endTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="mqID != null" >
+        #{mqID,jdbcType=VARCHAR},
+      </if>
+      <if test="productID != null" >
+        #{productID,jdbcType=INTEGER},
+      </if>
+      <if test="pinID != null" >
+        #{pinID,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="pinStatus != null" >
+        #{pinStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="alreadys != null" >
+        #{alreadys,jdbcType=INTEGER},
+      </if>
+      <if test="cans != null" >
+        #{cans,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mi360.aladdin.groupbuy.domain.PinOpen" >
+    update t_pin_open
+    <set >
+      <if test="mqID != null" >
+        mqID = #{mqID,jdbcType=VARCHAR},
+      </if>
+      <if test="productID != null" >
+        productID = #{productID,jdbcType=INTEGER},
+      </if>
+      <if test="pinID != null" >
+        pinID = #{pinID,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="pinStatus != null" >
+        pinStatus = #{pinStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="alreadys != null" >
+        alreadys = #{alreadys,jdbcType=INTEGER},
+      </if>
+      <if test="cans != null" >
+        cans = #{cans,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        endTime = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mi360.aladdin.groupbuy.domain.PinOpen" >
+    update t_pin_open
+    set mqID = #{mqID,jdbcType=VARCHAR},
+      productID = #{productID,jdbcType=INTEGER},
+      pinID = #{pinID,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      pinStatus = #{pinStatus,jdbcType=VARCHAR},
+      alreadys = #{alreadys,jdbcType=INTEGER},
+      cans = #{cans,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      endTime = #{endTime,jdbcType=TIMESTAMP}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPinInfoID" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from t_pin_open
+  	where pinID = #{pinID,jdbcType=INTEGER}
+  </select>
+</mapper>

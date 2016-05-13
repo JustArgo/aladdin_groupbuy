@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mi360.aladdin.groupbuy.mapper.PinOrderActionHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.mi360.aladdin.groupbuy.domain.PinOrderActionHistory" >
+    <id column="ID" property="ID" jdbcType="INTEGER" />
+    <result column="orderID" property="orderID" jdbcType="INTEGER" />
+    <result column="orderSn" property="orderSn" jdbcType="VARCHAR" />
+    <result column="supplyID" property="supplyID" jdbcType="INTEGER" />
+    <result column="mqID" property="mqID" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="operatorType" property="operatorType" jdbcType="VARCHAR" />
+    <result column="orderStatus" property="orderStatus" jdbcType="VARCHAR" />
+    <result column="shippingStatus" property="shippingStatus" jdbcType="VARCHAR" />
+    <result column="payStatus" property="payStatus" jdbcType="VARCHAR" />
+    <result column="returnMoneyStatus" property="returnMoneyStatus" jdbcType="VARCHAR" />
+    <result column="returnGoodsStatus" property="returnGoodsStatus" jdbcType="VARCHAR" />
+    <result column="actionType" property="actionType" jdbcType="VARCHAR" />
+    <result column="actionPos" property="actionPos" jdbcType="VARCHAR" />
+    <result column="pSum1" property="pSum1" jdbcType="BIGINT" />
+    <result column="orderSum1" property="orderSum1" jdbcType="BIGINT" />
+    <result column="pSum2" property="pSum2" jdbcType="BIGINT" />
+    <result column="orderSum2" property="orderSum2" jdbcType="BIGINT" />
+    <result column="paySum" property="paySum" jdbcType="BIGINT" />
+    <result column="actionNote" property="actionNote" jdbcType="VARCHAR" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, orderID, orderSn, supplyID, mqID, uid, operatorType, orderStatus, shippingStatus, 
+    payStatus, returnMoneyStatus, returnGoodsStatus, actionType, actionPos, pSum1, orderSum1, 
+    pSum2, orderSum2, paySum, actionNote, createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_pin_order_action_history
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_pin_order_action_history
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mi360.aladdin.groupbuy.domain.PinOrderActionHistory" >
+    insert into t_pin_order_action_history (ID, orderID, orderSn, 
+      supplyID, mqID, uid, 
+      operatorType, orderStatus, shippingStatus, 
+      payStatus, returnMoneyStatus, returnGoodsStatus, 
+      actionType, actionPos, pSum1, 
+      orderSum1, pSum2, orderSum2, 
+      paySum, actionNote, createTime
+      )
+    values (#{ID,jdbcType=INTEGER}, #{orderID,jdbcType=INTEGER}, #{orderSn,jdbcType=VARCHAR}, 
+      #{supplyID,jdbcType=INTEGER}, #{mqID,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, 
+      #{operatorType,jdbcType=VARCHAR}, #{orderStatus,jdbcType=VARCHAR}, #{shippingStatus,jdbcType=VARCHAR}, 
+      #{payStatus,jdbcType=VARCHAR}, #{returnMoneyStatus,jdbcType=VARCHAR}, #{returnGoodsStatus,jdbcType=VARCHAR}, 
+      #{actionType,jdbcType=VARCHAR}, #{actionPos,jdbcType=VARCHAR}, #{pSum1,jdbcType=BIGINT}, 
+      #{orderSum1,jdbcType=BIGINT}, #{pSum2,jdbcType=BIGINT}, #{orderSum2,jdbcType=BIGINT}, 
+      #{paySum,jdbcType=BIGINT}, #{actionNote,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mi360.aladdin.groupbuy.domain.PinOrderActionHistory" >
+    insert into t_pin_order_action_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="orderID != null" >
+        orderID,
+      </if>
+      <if test="orderSn != null" >
+        orderSn,
+      </if>
+      <if test="supplyID != null" >
+        supplyID,
+      </if>
+      <if test="mqID != null" >
+        mqID,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="operatorType != null" >
+        operatorType,
+      </if>
+      <if test="orderStatus != null" >
+        orderStatus,
+      </if>
+      <if test="shippingStatus != null" >
+        shippingStatus,
+      </if>
+      <if test="payStatus != null" >
+        payStatus,
+      </if>
+      <if test="returnMoneyStatus != null" >
+        returnMoneyStatus,
+      </if>
+      <if test="returnGoodsStatus != null" >
+        returnGoodsStatus,
+      </if>
+      <if test="actionType != null" >
+        actionType,
+      </if>
+      <if test="actionPos != null" >
+        actionPos,
+      </if>
+      <if test="pSum1 != null" >
+        pSum1,
+      </if>
+      <if test="orderSum1 != null" >
+        orderSum1,
+      </if>
+      <if test="pSum2 != null" >
+        pSum2,
+      </if>
+      <if test="orderSum2 != null" >
+        orderSum2,
+      </if>
+      <if test="paySum != null" >
+        paySum,
+      </if>
+      <if test="actionNote != null" >
+        actionNote,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="orderID != null" >
+        #{orderID,jdbcType=INTEGER},
+      </if>
+      <if test="orderSn != null" >
+        #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyID != null" >
+        #{supplyID,jdbcType=INTEGER},
+      </if>
+      <if test="mqID != null" >
+        #{mqID,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="operatorType != null" >
+        #{operatorType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingStatus != null" >
+        #{shippingStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null" >
+        #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="returnMoneyStatus != null" >
+        #{returnMoneyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="returnGoodsStatus != null" >
+        #{returnGoodsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="actionType != null" >
+        #{actionType,jdbcType=VARCHAR},
+      </if>
+      <if test="actionPos != null" >
+        #{actionPos,jdbcType=VARCHAR},
+      </if>
+      <if test="pSum1 != null" >
+        #{pSum1,jdbcType=BIGINT},
+      </if>
+      <if test="orderSum1 != null" >
+        #{orderSum1,jdbcType=BIGINT},
+      </if>
+      <if test="pSum2 != null" >
+        #{pSum2,jdbcType=BIGINT},
+      </if>
+      <if test="orderSum2 != null" >
+        #{orderSum2,jdbcType=BIGINT},
+      </if>
+      <if test="paySum != null" >
+        #{paySum,jdbcType=BIGINT},
+      </if>
+      <if test="actionNote != null" >
+        #{actionNote,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mi360.aladdin.groupbuy.domain.PinOrderActionHistory" >
+    update t_pin_order_action_history
+    <set >
+      <if test="orderID != null" >
+        orderID = #{orderID,jdbcType=INTEGER},
+      </if>
+      <if test="orderSn != null" >
+        orderSn = #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyID != null" >
+        supplyID = #{supplyID,jdbcType=INTEGER},
+      </if>
+      <if test="mqID != null" >
+        mqID = #{mqID,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="operatorType != null" >
+        operatorType = #{operatorType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        orderStatus = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingStatus != null" >
+        shippingStatus = #{shippingStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null" >
+        payStatus = #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="returnMoneyStatus != null" >
+        returnMoneyStatus = #{returnMoneyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="returnGoodsStatus != null" >
+        returnGoodsStatus = #{returnGoodsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="actionType != null" >
+        actionType = #{actionType,jdbcType=VARCHAR},
+      </if>
+      <if test="actionPos != null" >
+        actionPos = #{actionPos,jdbcType=VARCHAR},
+      </if>
+      <if test="pSum1 != null" >
+        pSum1 = #{pSum1,jdbcType=BIGINT},
+      </if>
+      <if test="orderSum1 != null" >
+        orderSum1 = #{orderSum1,jdbcType=BIGINT},
+      </if>
+      <if test="pSum2 != null" >
+        pSum2 = #{pSum2,jdbcType=BIGINT},
+      </if>
+      <if test="orderSum2 != null" >
+        orderSum2 = #{orderSum2,jdbcType=BIGINT},
+      </if>
+      <if test="paySum != null" >
+        paySum = #{paySum,jdbcType=BIGINT},
+      </if>
+      <if test="actionNote != null" >
+        actionNote = #{actionNote,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mi360.aladdin.groupbuy.domain.PinOrderActionHistory" >
+    update t_pin_order_action_history
+    set orderID = #{orderID,jdbcType=INTEGER},
+      orderSn = #{orderSn,jdbcType=VARCHAR},
+      supplyID = #{supplyID,jdbcType=INTEGER},
+      mqID = #{mqID,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      operatorType = #{operatorType,jdbcType=VARCHAR},
+      orderStatus = #{orderStatus,jdbcType=VARCHAR},
+      shippingStatus = #{shippingStatus,jdbcType=VARCHAR},
+      payStatus = #{payStatus,jdbcType=VARCHAR},
+      returnMoneyStatus = #{returnMoneyStatus,jdbcType=VARCHAR},
+      returnGoodsStatus = #{returnGoodsStatus,jdbcType=VARCHAR},
+      actionType = #{actionType,jdbcType=VARCHAR},
+      actionPos = #{actionPos,jdbcType=VARCHAR},
+      pSum1 = #{pSum1,jdbcType=BIGINT},
+      orderSum1 = #{orderSum1,jdbcType=BIGINT},
+      pSum2 = #{pSum2,jdbcType=BIGINT},
+      orderSum2 = #{orderSum2,jdbcType=BIGINT},
+      paySum = #{paySum,jdbcType=BIGINT},
+      actionNote = #{actionNote,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=TIMESTAMP}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

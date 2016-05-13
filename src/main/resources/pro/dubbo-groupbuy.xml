@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+				        http://www.springframework.org/schema/beans/spring-beans.xsd
+				        http://code.alibabatech.com/schema/dubbo
+				        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	
+	<dubbo:application name="groupbuyProvider"/>
+	<dubbo:consumer check="false"/>
+	<dubbo:registry  protocol="zookeeper" address="zookeeper://10.24.146.156:21810" timeout="30000" />
+	
+	<dubbo:protocol name="dubbo" port="-1"/>
+	
+	<dubbo:service interface="com.mi360.aladdin.groupbuy.service.IGroupBuyService" ref="groupBuyService"/>
+	<bean id="groupBuyService" class="com.mi360.aladdin.groupbuy.service.impl.GroupBuyServiceImpl"/>
+	
+	<!-- 收货地址 -->
+	<dubbo:reference id="manageReceAddService" interface="com.mi360.aladdin.receadd.service.IManageReceAddService" check="false"/>
+	
+	<!-- 商品 -->
+	<dubbo:reference id="productService" interface="com.mi360.aladdin.product.service.IProductService" check="false"/>
+	
+	<!-- 商品sku -->
+	<dubbo:reference id="productSkuService" interface="com.mi360.aladdin.product.service.IProductSkuService" check="false"/>
+	
+	<!-- 供应商 -->
+	<dubbo:reference id="supplierService" interface="com.mi360.aladdin.supplier.service.ISupplierService" check="false"/>
+	
+	<!-- 地区查询 -->
+	<dubbo:reference id="addressService" interface="com.mi360.aladdin.receadd.service.IAddressService" check="false"/>
+	
+	<!-- 用户 -->
+	<dubbo:service id="userService" interface="com.mi360.aladdin.user.service.UserService"/> 
+</beans>
